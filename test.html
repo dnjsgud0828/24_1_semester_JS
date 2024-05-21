@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css?after"/>
+    <title>CoffeeOrder</title>
 </head>
 <body>
-    <div style = "background-color: #F6F5F0">
-        <img src="res/logo.png" alt="My Image" style="width: 10%; height: auto;">
+    <div class="container">
+        <img src="res/logo.png" alt="My Image" style="width: 8%; height: auto; margin: 1%;">
     </div>
     <h1>음료주문시스템</h1>
-    <div></div>
+    <form class="checkbox">
+        <input type="checkbox" > 전체상품보기
+        <input type="checkbox" > 커피(Coffee)
+        <input type="checkbox" > 스무디(Smoothie)
+        <input type="checkbox" > 주스(Juice)
+        <input type="checkbox" > 차(Tea)
+    </form>   
+    <div class="container">
+        <dl> 커피 이렇게 하나씩 목록을 만듦...
+            <dt>
+                <img src="res/espresso.png" alt="Espresso">
+                <dd>에스프레소</dd>
+            </dt>
+        </dl>
+    </div>     
     <script src="practice.js"></script>
     <script src="background.js"></script>
 </body>
