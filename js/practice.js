@@ -69,21 +69,19 @@
 // }
 // printNumbers(1, 30);
 
-let a =undefined;
-function f() {}
-console.log(a===f());
+// let a =undefined;
+// function f() {}
+// console.log(a===f());
 
+const readline = require('readline');
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-/*
-1. global
-2. debouncing
-3. 거짓
-4. 8 
-5. 7
-6. 14
-7. 15
-8. 19
-9. 10
-10. 5
-*/
+rl.question('What do you think of Node.js? ', (answer) => {
+  // 입력값이 answer매개변수로 들어온다.
+  console.log(`Thank you for your valuable feedback: ${answer}`);
+  rl.close();
+});
