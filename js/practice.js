@@ -80,8 +80,25 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.question('What do you think of Node.js? ', (answer) => {
-  // 입력값이 answer매개변수로 들어온다.
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-  rl.close();
-});
+// let count = 0;
+
+// rl.on('line', (input) => {
+//   console.log(`Recived : ${input}`);
+//   count += 1;
+//   if (count === 3) {
+//     rl.close();
+//   }
+//   // 위의 경우 입력을 3번 연속으로 받은 후 close한다
+// });
+
+let input = []
+rl.on("line", function(line){
+    input = line.split(' ').map((el) => parseInt(el));
+    rl.close();
+})
+ 
+rl.on("close", function(){
+    let A = input[0];
+    let B = input[1];
+    console.log(A+B);
+})
