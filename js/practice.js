@@ -93,8 +93,8 @@ const rl = readline.createInterface({
 
 let input = []
 rl.on("line", function(line){
-    input = line.split(' ').map((el) => parseInt(el));
-    rl.close();
+    input = line.split(' ').map((el) => parseInt(el)); //입력받은값은 문자열이라 배열형식으로 저장
+    if(input[0]==1) rl.close();  
 })
  
 rl.on("close", function(){
