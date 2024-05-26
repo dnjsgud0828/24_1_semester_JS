@@ -1,35 +1,35 @@
 class coffee {//커피
-    constructor(menu, num, ice, shot){
+    constructor(menu, count, ice, shot){
         this.menu =menu;
-        this.num = num; //커피 개수
+        this.count = count; //커피 개수
         this.ice = ice; //얼음의 양
         this.shot = shot; //샷 횟수
     }
-    static makeCoffee(menu, num, ice, shot){
+    static makeCoffee(menu, count, ice, shot){
         switch(menu){
-        case 'espresso': return new expresso(num); 
-        case 'americano': return new americano(num, ice, shot);
-        case 'lattee': return new lattee(num, ice, shot);
+        case 'espresso': return new expresso(count); 
+        case 'americano': return new americano(count, ice, shot);
+        case 'lattee': return new lattee(count, ice, shot);
         }
     }
 }
 class expresso extends coffee{
-    constructor(num){
-        this.num = num;
+    constructor(count){
+        this.count = count;
         this.price = 1000;
     }
 }
 class americano extends coffee{
-    constructor(num, ice, shot){
-        this.num = num;
+    constructor(count, ice, shot){
+        this.count = count;
         this.ice = ice;
         this.shot = shot;
         this.price = 1500;
     }
 }
 class lattee extends coffee{
-    constructor(num, ice, shot){
-        this.num = num;
+    constructor(count, ice, shot){
+        this.count = count;
         this.ice = ice;
         this.shot = shot;
         this.price = 2500;
@@ -37,92 +37,90 @@ class lattee extends coffee{
 }
 
 class tea{ //차
-    constructor(teaLeaf, num, ice, price){
+    constructor(teaLeaf, count, ice){
         this.teaLeaf = teaLeaf;
-        this.num = num;
+        this.count = count;
         this.ice = ice; 
-        this.price = price;
     }
-    static makeTea(teaLeaf, num, ice){
+    static makeTea(teaLeaf, count, ice){
         switch(teaLeaf){
-            case 'hibiscus': return new hibiscus(num, ice);
-            case 'earlgray': return new earlgray(num, ice);
-            case 'iceTea': return new iceTea(num, ice);
+            case 'hibiscus': return new hibiscus(count, ice);
+            case 'earlgray': return new earlgray(count, ice);
+            case 'iceTea': return new iceTea(count, ice);
         }
     }
 }
 class hibiscus extends tea{
-    constructor(num, ice){
-        this.num= num;
+    constructor(count, ice){
+        this.count= count;
         this.ice = ice;   
         this.price = 2500; 
     }
 }
 class earlgray extends tea{
-    constructor(num, ice){
-        this.num= num;
+    constructor(count, ice){
+        this.count= count;
         this.ice = ice;
         this.price = 2500; 
     }
 }
 class iceTea extends tea{
-    constructor(num, ice){
-        this.num= num;
+    constructor(count, ice){
+        this.count= count;
         this.ice = ice;
         this.price = 1500; 
     }
 }
 
 class smoothie{ //스무디
-    constructor(fruit, num, ice, price){
+    constructor(fruit, count, ice){
         this.fruit = fruit;
-        this.num = num;
+        this.count = count;
         this.ice = ice; 
-        this.price = price; 
     }
     static makeSmoothie(){
         switch(fruit){
-            case 'blueSmoothie': new blueSmoothie(num);
-            case 'straSmoothie': new straSmoothie(num);
-            case 'mangoSmoothie': new mangoSmoothie(num);
+            case 'blueSmoothie': new blueSmoothie(count);
+            case 'straSmoothie': new straSmoothie(count);
+            case 'mangoSmoothie': new mangoSmoothie(count);
         }
     }
 }
 class blueSmoothie extends smoothie{
-    constructor(num){
-        this.num=num;
+    constructor(count){
+        this.count=count;
         this.price = 3500; 
     }
 }
 class straSmoothie extends smoothie{
-    constructor(num){
-        this.num=num;
+    constructor(count){
+        this.count=count;
         this.price = 3500; 
     }
 }
 class mangoSmoothie extends smoothie{
-    constructor(num){
-        this.num=num;
+    constructor(count){
+        this.count=count;
         this.price = 3500; 
     }
 }
 
 class orderList{
-    constructor(price){
+    constructor(totalPrice){
         this.orderList = []; //주문목록, 객체로 저장됨
         this.totalPrice= totalPrice; //계산 금액
     }
 
-    getList(menu){//주문목록 추가 메소드
-        orderList.push = menu;
+    getList(drink){//주문목록 추가 메소드
+        orderList.push(drink);
     }
 
-    removeMenu(){//목록 제거 메소드
-
+    removeMenu(drink){//목록 제거 메소드
+        orderList.splice(drink, 1);
     }
 
-    getPrice(menu, num, ice){//가격을 구하는 메소드, ice시 500원 추가
-        this.totalPrice += menu * num;
+    getPrice(menu, count, ice){//가격을 구하는 메소드, ice시 500원 추가
+        this.totalPrice += menu * count;
         if(ice>=1) totalPrice+=500;
     }
 }
@@ -136,48 +134,42 @@ class showMenu{ //주문목록 확인 클래스
         1. 커피\n\
         2. 차\n\
         3. 스무디\n\
-        4. 취소");
+        4. 음료제거\n\
+        5. 주문종료");
     }
 
     static showCoffee(){
         console.log("메뉴(아이스 변경 시 500원 추가/아이스메뉴는 제외)\n\
+        메뉴, 수, 아이스, 샷 추가 횟수를 순서대로 입력\n\
         1. 에스프레소 1000원\n\
         2. 아메리카노 1500원\n\
         3. 라떼 2500원\n\
-        4. 주문종료");
+        4. 목록선택");
     }
 
     static showTea(){
         console.log("메뉴(아이스 변경 시 500원 추가/아이스메뉴는 제외)\n\
+        메뉴, 수, 아이스, 샷 추가 횟수를 순서대로 입력\n\
         1. 히비스커스 1000원\n\
         2. 얼그레이 1500원\n\
         3. 아이스티 2500원\n\
-        4. 주문종료");
+        4. 목록선택");
     }
     static showSmoothie(){
         console.log("메뉴(아이스 변경 시 500원 추가/아이스메뉴는 제외)\n\
+        메뉴, 수, 아이스, 샷 추가 횟수를 순서대로 입력\n\
         1. 블루베리 스무디 1000원\n\
         2. 딸기 스무디 1500원\n\
         3. 망고 스무디 2500원\n\
-        4. 주문종료");
+        4. 목록선택");
     }
     static showOrderList(list){
-        console.log(`주문목록`);
+        console.log('주문목록');
         list.forEach((order) => {
-            console.log(`${order.menu}: ${order.num}개`);
+            console.log(`${order.menu}: ${order.count}개`);
         });
     }
 }
-
-/*클래스만 => main: 메뉴에 대한 클래스, 주문목록 클래스(메뉴추가, 제거, 계산 가격 측정)
-            sub: 목록 출력, 메뉴 이름이 나와야 함 
-            문제: 객체를 어떻게 생성해야 함? */
-
-const readline = require('readline'); //콘솔창에서 입출력을 받기위한 코드, 모듈 import
-const rl = readline.createInterface({ //입출력을 위한 인터페이스 객체
-    input: process.stdin,
-    output: process.stdout,
-});
 
 //main 실행문
 const CATEGORY = 4;

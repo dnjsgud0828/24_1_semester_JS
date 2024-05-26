@@ -90,15 +90,47 @@ const rl = readline.createInterface({
 //   }
 //   // 위의 경우 입력을 3번 연속으로 받은 후 close한다
 // });
+// class a{
+//     constructor(b, c){
+//         this.b =b;
+//         this.c =c;
+//     }
+      
+// }
+// let b =[];
+// for(let i=1; i<4; i++){
+//     let d = new a(1, 2);
+//     b.push(d);
+//     console.log(d);
+// }
+// console.log(b);
+let a = ('1'==1);
+switch(a){
+  case true: {
+    console.log('참');
+    break;
+  }
+  case false: {
+    console.log('거짓');
+    break;
+  }
+  default: {
+    console.log('why!!!!!!');
+    break;
+  }
+}
+console.log(a)
 
-let input = []
-rl.on("line", function(line){
-    input = line.split(' ').map((el) => parseInt(el)); //입력받은값은 문자열이라 배열형식으로 저장
-    if(input[0]==1) rl.close();  
-})
+
+// let input = []
+// rl.on("line", function(line){
+//     input = line.split(' ').map((el) => parseInt(el)); //입력받은값은 문자열이라 배열형식으로 저장
+//     console.log(input[0]+input[1]);
+//     rl.close();  
+// })
  
-rl.on("close", function(){
-    let A = input[0];
-    let B = input[1];
-    console.log(A+B);
-})
+// rl.on("close", function(){
+//     let A = input[0];
+//     let B = input[1];
+//     console.log(A+B);
+// })
